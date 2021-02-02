@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       new TodoItem(
           "Give talk",
-          "Give talk at Tech Olympics at 5 pm on Feb 4th",
+          "Scheduled for 5 pm on Feb 4th",
           TodoItemType.share,
           3,
           false
@@ -81,16 +81,101 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
+        padding: EdgeInsets.all(20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have no todos on your list',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildCounterDoneColumn(),
+                buildCounterTotalColumn()
+              ],
             ),
+            Container(
+              padding: EdgeInsets.all(10),
+            ),
+            for (TodoItem item in getTechOlympicTodos())
+              buildTodoItemWidget(item),
           ],
         ),
       ),
     );
+  }
+
+  Widget buildCounterDoneColumn() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          getNumberOfCompletedTechOlympicTodos(getTechOlympicTodos()).toString(),
+          style: TextStyle(
+            fontSize: 24
+          ),
+        ),
+        Text("Completed")
+      ],
+    );
+  }
+
+  Widget buildCounterTotalColumn() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          getTotalNumberTechOlympicTodos(getTechOlympicTodos()).toString(),
+          style: TextStyle(
+              fontSize: 24
+          ),
+        ),
+        Text("Total")
+      ],
+    );
+  }
+
+  Widget buildTodoItemWidget(TodoItem item) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+            child: _getIcon(item.type),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                item.title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14
+                ),
+              ),
+              Text(item.description)
+            ], 
+          ),
+          Spacer(),
+          Checkbox(
+              value: item.isDone,
+              onChanged: null
+          )
+        ],
+      ),
+    );
+  }
+
+  Icon _getIcon(TodoItemType type) {
+    switch(type) {
+      case TodoItemType.prep:
+        return Icon(Icons.edit);
+        break;
+      case TodoItemType.practice:
+        return Icon(Icons.volume_up_sharp);
+        break;
+      default:
+        return Icon(Icons.share);
+    }
   }
 }
