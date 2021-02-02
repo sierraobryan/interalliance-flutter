@@ -32,31 +32,39 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  // DONE function to create a list of TO todos
-  List<TodoItem> getTechOlympicTodos() {
-    return [
-      new TodoItem(
+  List<TodoItem> list = [
+    new TodoItem(
         "Write Slides",
         "Put together slides on Flutter and Dart",
         TodoItemType.prep,
         1,
         true
-      ),
-      new TodoItem(
-          "Practice talk",
-          "Run through full slide deck and time",
-          TodoItemType.practice,
-          2,
-          true
-      ),
-      new TodoItem(
-          "Give talk",
-          "Scheduled for 5 pm on Feb 4th",
-          TodoItemType.share,
-          3,
-          false
-      )
-    ];
+    ),
+    new TodoItem(
+        "Practice talk",
+        "Run through full slide deck and time",
+        TodoItemType.practice,
+        2,
+        true
+    ),
+    new TodoItem(
+        "Give talk",
+        "Scheduled for 5 pm on Feb 4th",
+        TodoItemType.share,
+        3,
+        false
+    )
+  ];
+
+  void _updateItem(TodoItem item, bool value) {
+    setState(() {
+      list.where((element) => element.priority == item.priority).first.isDone = value;
+    });
+  }
+
+  // DONE function to create a list of TO todos
+  List<TodoItem> getTechOlympicTodos() {
+    return list;
   }
 
   // DONE function to count number of todo items
@@ -159,7 +167,9 @@ class _MyHomePageState extends State<MyHomePage> {
           Spacer(),
           Checkbox(
               value: item.isDone,
-              onChanged: null
+              onChanged: (value) {
+                _updateItem(item, value);
+              },
           )
         ],
       ),
