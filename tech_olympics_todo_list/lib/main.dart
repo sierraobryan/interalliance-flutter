@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tech_olympics_todo_list/todo_item.dart';
+import 'package:tech_olympics_todo_list/todo_item_type.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,24 +32,47 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  // TODO function to create a list of TO todos
-  void getTechOlympicTodos() {
-
+  // DONE function to create a list of TO todos
+  List<TodoItem> getTechOlympicTodos() {
+    return [
+      new TodoItem(
+        "Write Slides",
+        "Put together slides on Flutter and Dart",
+        TodoItemType.prep,
+        1,
+        true
+      ),
+      new TodoItem(
+          "Practice talk",
+          "Run through full slide deck and time",
+          TodoItemType.practice,
+          2,
+          true
+      ),
+      new TodoItem(
+          "Give talk",
+          "Give talk at Tech Olympics at 5 pm on Feb 4th",
+          TodoItemType.share,
+          3,
+          false
+      )
+    ];
   }
 
-  // TODO function to count number of todo items
-  void getTotalNumberTechOlympicTodos() {
-
+  // DONE function to count number of todo items
+  int getTotalNumberTechOlympicTodos(List<TodoItem> todoList) {
+    return todoList.length;
   }
 
-  // TODO function to count number of completed todo items
-  void getNumberOfCompletedTechOlympicTodos() {
-
+  // DONE function to count number of completed todo items
+  int getNumberOfCompletedTechOlympicTodos(List<TodoItem> todoList) {
+    return todoList.where((element) => element.isDone).length;
   }
 
-  // optional function to sort todo items by priority
-  void sortToDosByPriority() {
-
+  // DONE optional function to sort todo items by priority
+  List<TodoItem> sortToDosByPriority(List<TodoItem> todoList) {
+    todoList.sort((a, b) => a.priority.compareTo(b.priority));
+    return todoList;
   }
 
   @override
