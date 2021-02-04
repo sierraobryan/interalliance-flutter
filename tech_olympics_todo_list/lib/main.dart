@@ -71,4 +71,25 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+  // optional build a widget that displays the total number of completed todos
+  void buildCounterDoneColumn() {
+
+  }
+
+  // optional build a widget that displays the total number of todos
+  void buildCounterTotalColumn() {
+
+  }
+
+  // TODO build a widget that holds one todo item
+  // should include title, content, and a checkbox indicating done status
+  void buildTodoItemWidget() {
+
+  }
+
+  // challenge function that returns icon based on type
+  void _getIcon() {
+
+  }
 }
