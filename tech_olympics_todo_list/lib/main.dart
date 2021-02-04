@@ -32,17 +32,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  List<TodoItem> _techOlympicTodos;
+
   // DONE function to create a list of TO todos
   List<TodoItem> getTechOlympicTodos() {
     return [
       new TodoItem(
-        "Write Slides",
-        "Put together slides on Flutter and Dart",
-        TodoItemType.prep,
-        1,
-        true
+          1,
+          "Write Slides",
+          "Put together slides on Flutter and Dart",
+          TodoItemType.prep,
+          1,
+          true
       ),
       new TodoItem(
+          2,
           "Practice talk",
           "Run through full slide deck and time",
           TodoItemType.practice,
@@ -50,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           true
       ),
       new TodoItem(
+          3,
           "Give talk",
           "Give talk at Tech Olympics at 5 pm on Feb 4th",
           TodoItemType.share,
@@ -93,4 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+
 }
