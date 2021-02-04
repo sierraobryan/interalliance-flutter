@@ -15,6 +15,34 @@ enum Color {
   blue
 }
 
+class TechOlympicParticipant {
+  
+  // fields 
+  String name;
+  int grade;
+  String location;
+  List<String> techOlympicSessions;
+
+  // constructor
+  TechOlympicParticipant(
+      this.name,
+      this.grade,
+      this.location,
+      this.techOlympicSessions
+      )
+
+  // constructor with named arguments
+  TechOlympicParticipant({
+    this.name,
+    this.grade,
+    this.location,
+    this.techOlympicSessions
+  })
+  
+  // we could put other functions here 
+
+}
+
 class Examples {
 
   String name = "Sierra"; // still a string
@@ -27,6 +55,19 @@ class Examples {
 
   String publicName = "Sierra"; // public
   String _privateName = "Sierra"; // private
+
+  // instantiate my class
+  TechOlympicParticipant sierra = TechOlympicParticipant(
+      "Sierra", 20, "Cincinnati, OH", ["Flutter"]
+  );
+
+  // instantiate my class with named variables
+  TechOlympicParticipant sierra = TechOlympicParticipant(
+      name: "Sierra",
+      grade: 20,
+      location: "Cincinnati, OH",
+      techOlympicSessions: ["Flutter"]
+  );
 
   // examples functions
   void sayHello() {

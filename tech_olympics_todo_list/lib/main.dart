@@ -32,17 +32,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  List<TodoItem> _techOlympicTodos;
+
   // DONE function to create a list of TO todos
   List<TodoItem> getTechOlympicTodos() {
     return [
       new TodoItem(
-        "Write Slides",
-        "Put together slides on Flutter and Dart",
-        TodoItemType.prep,
-        1,
-        true
+          1,
+          "Write Slides",
+          "Put together slides on Flutter and Dart",
+          TodoItemType.prep,
+          1,
+          true
       ),
       new TodoItem(
+          2,
           "Practice talk",
           "Run through full slide deck and time",
           TodoItemType.practice,
@@ -50,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           true
       ),
       new TodoItem(
+          3,
           "Give talk",
           "Scheduled for 5 pm on Feb 4th",
           TodoItemType.share,
@@ -103,6 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  // DONE optional build a widget that displays the total number of completed todos
   Widget buildCounterDoneColumn() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -118,6 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  // DONE optional build a widget that displays the total number of todos
   Widget buildCounterTotalColumn() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -133,6 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  // DONE build a widget that holds one item
+  // should include title, content, and a checkbox indicating done status
   Widget buildTodoItemWidget(TodoItem item) {
     return Container(
       padding: EdgeInsets.all(10),
@@ -166,6 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  // DONE challenge function that returns icon based on type
   Icon _getIcon(TodoItemType type) {
     switch(type) {
       case TodoItemType.prep:
