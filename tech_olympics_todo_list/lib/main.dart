@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_olympics_todo_list/todo_item.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  List<TodoItem> _techOlympicTodos;
+
   // TODO function to create a list of TO todos
   void getTechOlympicTodos() {
 
@@ -45,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 
-  // optional function to sort todo items by priority
+  // challenge: function to sort todo items by priority
   void sortToDosByPriority() {
 
   }

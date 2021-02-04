@@ -1,1 +1,1 @@
-// define todo item types
+// challenge!! define todo item types (enum)
